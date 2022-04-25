@@ -15,7 +15,6 @@ public class MainPageTest {
 
   @Test
   public void openPageChrome() {
-    Configuration.pageLoadTimeout=6000;
     Selenide.open("http://automationpractice.com/index.php");
     Selenide.$(".sf-with-ul").shouldHave(text("Women"));
     Selenide.closeWindow();
