@@ -15,15 +15,15 @@ public class MainPageTest {
 
   @Test
   public void openPageChrome() {
-    Selenide.open("http://automationpractice.com/index.php");
-    Selenide.$(".sf-with-ul").shouldHave(text("Women"));
+    Selenide.open("https://devby.io/");
+    Selenide.$("div.navbar__row > nav > a:nth-child(1)").shouldHave(text("Новости"));
     Selenide.closeWindow();
   }
 
     @Test
   public void openPageFox() {
     System.setProperty("selenide.browser", "firefox");
-    Selenide.open("https://pikabu.ru");
+    Selenide.open("https://devby.io/");
     Selenide.closeWindow();
   }
 
@@ -31,7 +31,7 @@ public class MainPageTest {
   public void celeniumOpenPageFox() {
     System.setProperty("webdriver.gecko.driver", "/Users/vitali/IdeaProjects/geckodriver");
     WebDriver driver = new FirefoxDriver();
-    String url = "https://pikabu.ru";
+    String url = "https://devby.io/";
     driver.get(url);
     driver.close();
   }
@@ -40,7 +40,7 @@ public class MainPageTest {
   public void celeniumOpenPageChrome() {
     System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
     WebDriver driver = new ChromeDriver();
-    String url = "https://pikabu.ru";
+    String url = "https://devby.io/";
     driver.get(url);
     driver.close();
   }
