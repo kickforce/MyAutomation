@@ -1,54 +1,47 @@
 package com.example.myautomation;
-
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
+import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 
 public class MainPageTest {
-  MainPage mainPage = new MainPage();
 
-  @BeforeAll
-  public static void setUpAll() {
-    Configuration.browserSize = "1280x800";
-    SelenideLogger.addListener("allure", new AllureSelenide());
+  @Test
+  public void openPageChrome() {
+    Selenide.open("https://devby.io/");
+    Selenide.$("div.navbar__row > nav > a:nth-child(1)").shouldHave(text("Новости"));
+    Selenide.closeWindow();
   }
 
-  @BeforeEach
-  public void setUp() {
-    open("https://www.jetbrains.com/");
+    @Test
+  public void openPageFox() {
+    System.setProperty("selenide.browser", "firefox");
+    Selenide.open("https://devby.io/");
+    Selenide.closeWindow();
   }
 
   @Test
-  public void search() {
-    mainPage.searchButton.click();
-
-    $("[data-test='search-input']").sendKeys("Selenium");
-    $("button[data-test='full-search-button']").click();
-
-    $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
+  public void celeniumOpenPageFox() {
+    System.setProperty("webdriver.gecko.driver", "/Users/vitali/IdeaProjects/geckodriver");
+    WebDriver driver = new FirefoxDriver();
+    String url = "https://devby.io/";
+    driver.get(url);
+    driver.close();
   }
 
   @Test
-  public void toolsMenu() {
-    mainPage.toolsMenu.hover();
-
-    $("div[data-test='menu-main-popup-content']").shouldBe(visible);
-  }
-
-  @Test
-  public void navigationToAllTools() {
-    mainPage.seeAllToolsButton.click();
-
-    $("#products-page").shouldBe(visible);
-
-    assertEquals("All Developer Tools and Products by JetBrains", Selenide.title());
+  public void celeniumOpenPageChrome() {
+    System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
+    WebDriver driver = new ChromeDriver();
+    String url = "https://devby.io/";
+    driver.get(url);
+    driver.close();
   }
 }
