@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Condition.disabled;
@@ -76,23 +77,33 @@ public class MainPageTest {
     WebElement dress = driver
             .findElement(By.cssSelector(".product-container"));
     action.moveToElement(dress).build().perform();
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     WebElement btn = driver
             .findElement(By.cssSelector(".button.ajax_add_to_cart_button.btn.btn-default"));
     btn.click();
     driver.switchTo().activeElement();
-    driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
-
-    WebElement proceedbtn = driver.
-            findElement(By.xpath("//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span"));
-
-    JavascriptExecutor executor = (JavascriptExecutor) driver;
-    executor.executeScript("arguments[0].click();", proceedbtn);
+    driver.findElement(By.cssSelector(".col-md-6 > div.button-container > a")).click();
     driver.findElement(By.cssSelector(".standard-checkout.button-medium")).click();
     driver.findElement(By.cssSelector("p >button")).click();
     driver.findElement(By.id("cgv")).click();
     driver.findElement(By.cssSelector("p >button")).click();
-    driver.findElement(By.cssSelector("#HOOK_PAYMENT > div:nth-child(1) > div > p")).click();
+    driver.findElement(By.cssSelector(".bankwire")).click();
     driver.findElement(By.cssSelector("#cart_navigation > button")).click();
+    String textWithNumber = driver.findElement(By.cssSelector(".box")).getText();
+    String number = textWithNumber.substring(216, 225);
+    driver.findElement(By.cssSelector("#contact-link > a")).click();
+    Select subject = new Select(driver.findElement(By.id("id_contact")));
+    subject.selectByValue("2");
+    List<WebElement> refnumber = driver.findElements(By.cssSelector("div:nth-child(6) > div > select"));
+    for (WebElement option : refnumber) {
+      if (option.getText().contains(number)) {
+        option.click();
+        break;
+      }
+    }
+    driver.findElement(By.cssSelector("#message")).sendKeys("I have a problem with my order. Could you help me,please?");
+    driver.findElement(By.cssSelector("#submitMessage")).click();
+
   }
 
   @Test
@@ -131,10 +142,35 @@ public class MainPageTest {
   }
 
   @Test
-  public void orderHelp(){
-     System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
+  public void writeReview() {
+    System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
     WebDriver driver = new ChromeDriver();
-
+    String url = "http://automationpractice.com/index.php";
+    driver.get(url);
+    driver.findElement(By.cssSelector(".header_user_info")).click();
+    WebElement email = driver
+            .findElement(By.cssSelector("#email"));
+    email.sendKeys("kickforce666@gmail.com");
+    WebElement pass = driver
+            .findElement(By.cssSelector("#passwd"));
+    pass.sendKeys("123qweQWE");
+    driver.findElement(By.cssSelector(".icon-lock")).click();
+    driver.findElement(By.cssSelector("#block_top_menu > ul > li:nth-child(3) > a")).click();
+    Actions action = new Actions(driver);
+    WebElement dress = driver
+            .findElement(By.cssSelector(".product-container"));
+    action.moveToElement(dress).build().perform();
+    driver.findElement(By.cssSelector(".lnk_view.btn.btn-default > span")).click();
+    driver.findElement(By.cssSelector(".open-comment-form")).click();
+    driver.switchTo().activeElement();
+    driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+    driver.findElement(By.cssSelector(".star_content > div:nth-child(7) > a")).click();
+    driver.findElement(By.id("comment_title")).sendKeys("High quality product");
+    driver.findElement(By.id("content")).sendKeys("Faded short sleeve t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!");
+    driver.findElement(By.id("submitNewMessage")).click();
+    driver.switchTo().activeElement();
+    driver.findElement(new ByText("OK")).click();
   }
+
 
 }
