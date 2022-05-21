@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import static pages.SignInPage.driver;
 
 public class CasualDressPage {
-  //static WebDriver driver;
   @FindBy(css = ".product-container")
   static
   WebElement casualdresshover;
@@ -21,18 +20,7 @@ public class CasualDressPage {
   static
   WebElement proceedbutton;
 
-
-/*  WebElement btn = driver
-          .findElement(By.cssSelector(".button.ajax_add_to_cart_button.btn.btn-default"));
-    btn.click();*/
-
-
-    /* WebElement dress = driver
-            .findElement(By.cssSelector(".product-container"));
-    action.moveToElement(dress).build().perform();*/
-
   public CasualDressPage(WebDriver driver) {
-   // this.driver = driver;
     PageFactory.initElements(driver, this);
   }
 
@@ -44,7 +32,8 @@ public class CasualDressPage {
   public static void addToChart() {
     addtochart.click();
   }
-  public static OrderPage proceedOnPopUp(){
+
+  public static OrderPage proceedOnPopUp() {
     proceedbutton.click();
     return new OrderPage(driver);
 

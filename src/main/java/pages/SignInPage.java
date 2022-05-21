@@ -28,9 +28,6 @@ public class SignInPage {
   static
   WebElement createuser;
 
-  /*driver.findElement(By.cssSelector("#email_create")).sendKeys("test.test1@test11.com");
-    driver.findElement(By.cssSelector("#SubmitCreate")).click();*/
-
   public SignInPage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
@@ -48,11 +45,12 @@ public class SignInPage {
     signin.click();
   }
 
-  public static void newUserCredentials(String newemail){
+  public static void newUserCredentials(String newemail) {
     createemail.sendKeys(newemail);
   }
-  public static NewUserPage creatUser(){
-   createuser.click();
-   return new NewUserPage(driver);
+
+  public static NewUserPage creatUser() {
+    createuser.click();
+    return new NewUserPage(driver);
   }
 }
