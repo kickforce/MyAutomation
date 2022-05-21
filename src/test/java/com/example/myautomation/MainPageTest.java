@@ -88,7 +88,7 @@ public class MainPageTest extends BaseTest {
   public void writeReview() {
     System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
     WebDriver driver = new ChromeDriver();
-    String url = "http://automationpractice.com/index.php";
+    /*String url = "http://automationpractice.com/index.php";
     driver.get(url);
     driver.findElement(By.cssSelector(".header_user_info")).click();
     WebElement email = driver
@@ -96,7 +96,11 @@ public class MainPageTest extends BaseTest {
     email.sendKeys("kickforce666@gmail.com");
     WebElement pass = driver
             .findElement(By.cssSelector("#passwd"));
-    pass.sendKeys("123qweQWE");
+    pass.sendKeys("123qweQWE");*/
+       MainPage mainPage = new MainPage(driver);
+    mainPage.openPage("http://automationpractice.com/index.php");
+    SignInPage.logIn();
+    SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
     driver.findElement(By.cssSelector(".icon-lock")).click();
     driver.findElement(By.cssSelector("#block_top_menu > ul > li:nth-child(3) > a")).click();
     Actions action = new Actions(driver);
