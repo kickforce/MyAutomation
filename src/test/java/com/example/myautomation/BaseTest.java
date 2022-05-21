@@ -20,13 +20,13 @@ public class BaseTest {
             driver =  new ChromeDriver();
             driver.manage().deleteAllCookies();
             driver.manage().window().fullscreen();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-           //wait = new WebDriverWait(driver, Duration.z);
+            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+           // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
           }
   }
-  @AfterAll
+  /*@AfterAll
   public static void driverTearDown(){
     driver.quit();
-  }
+  }*/
 
 }

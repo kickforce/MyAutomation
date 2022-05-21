@@ -11,9 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import pages.CasualDressPage;
-import pages.OrderPage;
-import pages.SignInPage;
+import pages.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -55,75 +53,35 @@ public class MainPageTest extends BaseTest {
   }
 
   @Test
-  public void orderCasualDress() throws InterruptedException {
+  public void orderCasualDress() {
     MainPage mainPage = new MainPage(driver);
-    CasualDressPage casualDressPage = new CasualDressPage(driver);
-    OrderPage orderPage = new OrderPage(driver);
-    SignInPage signInPage = new SignInPage(driver);
     mainPage.openPage("http://automationpractice.com/index.php");
-    signInPage.logIn();
-    signInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
+    SignInPage.logIn();
+    SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
     mainPage.topMenu();
     mainPage.casualdress();
-    casualDressPage.hoverDress();
-    casualDressPage.addToChart();
+    CasualDressPage.hoverDress();
+    CasualDressPage.addToChart();
     mainPage.switchToWindow();
-    casualDressPage.proceedOnPopUp();
-    orderPage.confirmOrder();
-
-
-    String textWithNumber = driver.findElement(By.cssSelector(".box")).getText();
-    String number = textWithNumber.substring(216, 225);
-    driver.findElement(By.cssSelector("#contact-link > a")).click();
-    Select subject = new Select(driver.findElement(By.id("id_contact")));
-    subject.selectByValue("2");
-    List<WebElement> refnumber = driver.findElements(By.cssSelector("div:nth-child(6) > div > select"));
-    for (WebElement option : refnumber) {
-      if (option.getText().contains(number)) {
-        option.click();
-        break;
-      }
-    }
-    driver.findElement(By.cssSelector("#message")).sendKeys("I have a problem with my order. Could you help me,please?");
-    driver.findElement(By.cssSelector("#submitMessage")).click();
-
+    CasualDressPage.proceedOnPopUp();
+    OrderPage.confirmOrder();
+    String ordernumber = OrderPage.getOrderNumber();
+    ContactFormPage.contactUs();
+    ContactFormPage.subjectHeadingChoose();
+    ContactFormPage.selectReference(ordernumber);
+    ContactFormPage.enterText();
+    ContactFormPage.submitContactForm();
   }
 
   @Test
-  public void regUser() {
-    System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
-    WebDriver driver = new ChromeDriver();
-    String url = "http://automationpractice.com/index.php";
-    driver.get(url);
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    driver.findElement(By.cssSelector(".header_user_info")).click();
-    driver.findElement(By.cssSelector("#email_create")).sendKeys("test.test1@test11.com");
-    driver.findElement(By.cssSelector("#SubmitCreate")).click();
-
-    driver.findElement(By.id("id_gender1")).click();
-    driver.findElement(By.id("customer_firstname")).sendKeys("Ivan");
-    driver.findElement(By.id("customer_lastname")).sendKeys("Ivanov");
-    driver.findElement(By.id("newsletter")).click();
-    driver.findElement(By.id("optin")).click();
-    Select days = new Select(driver.findElement(By.id("days")));
-    days.selectByValue("1");
-    Select months = new Select(driver.findElement(By.id("months")));
-    months.selectByValue("1");
-    Select years = new Select(driver.findElement(By.id("years")));
-    years.selectByValue("2020");
-    driver.findElement(By.id("years")).sendKeys("2020");
-    driver.findElement(By.id("passwd")).sendKeys("12345");
-    driver.findElement(By.id("company")).sendKeys("Kaseya");
-    driver.findElement(By.id("address1")).sendKeys("701 Brickell Avenue");
-    driver.findElement(By.id("city")).sendKeys("Miami");
-    Select state = new Select(driver.findElement(By.id("id_state")));
-    state.selectByVisibleText("Florida");
-    driver.findElement(By.id("postcode")).sendKeys("33131");
-    driver.findElement(By.id("other")).sendKeys("Additional information");
-    driver.findElement(By.id("phone")).sendKeys("+375292929297");
-    driver.findElement(By.id("phone_mobile")).sendKeys("+375333333333");
-    driver.findElement(By.id("alias")).sendKeys("18, Baker street");
-    driver.findElement(By.id("submitAccount")).click();
+  public void regUser(){
+    MainPage mainPage = new MainPage(driver);
+    mainPage.openPage("http://automationpractice.com/index.php");
+    SignInPage.logIn();
+    SignInPage.newUserCredentials("newuser@newuser.com");
+    SignInPage.creatUser();
+    NewUserPage.enterInformation();
+    NewUserPage.submitForm();
   }
 
   @Test

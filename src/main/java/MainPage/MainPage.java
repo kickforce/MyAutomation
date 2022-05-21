@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.SignInPage;
 
 public class MainPage {
   WebDriver driver;
@@ -29,8 +30,9 @@ public class MainPage {
 
   }
 
-  public void openPage(String urladdres) {
+  public SignInPage openPage(String urladdres) {
     driver.get(urladdres);
+    return new SignInPage(driver);
   }
   public void topMenu(){
     Actions action = new Actions(driver);

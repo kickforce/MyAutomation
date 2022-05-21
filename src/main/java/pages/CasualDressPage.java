@@ -6,15 +6,20 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static pages.SignInPage.driver;
+
 public class CasualDressPage {
-  WebDriver driver;
+  //static WebDriver driver;
   @FindBy(css = ".product-container")
+  static
   WebElement casualdresshover;
   @FindBy(css = ".button.ajax_add_to_cart_button.btn.btn-default")
+  static
   WebElement addtochart;
 
   @FindBy(css = ".col-md-6 > div.button-container > a")
-          WebElement proceedbutton;
+  static
+  WebElement proceedbutton;
 
 
 /*  WebElement btn = driver
@@ -27,20 +32,21 @@ public class CasualDressPage {
     action.moveToElement(dress).build().perform();*/
 
   public CasualDressPage(WebDriver driver) {
-    this.driver = driver;
+   // this.driver = driver;
     PageFactory.initElements(driver, this);
   }
 
-  public void hoverDress() {
+  public static void hoverDress() {
     Actions action = new Actions(driver);
     action.moveToElement(casualdresshover).build().perform();
   }
 
-  public void addToChart() {
+  public static void addToChart() {
     addtochart.click();
   }
-  public void proceedOnPopUp(){
+  public static OrderPage proceedOnPopUp(){
     proceedbutton.click();
+    return new OrderPage(driver);
 
   }
 }
