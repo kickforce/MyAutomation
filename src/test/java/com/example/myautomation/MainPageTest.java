@@ -95,16 +95,9 @@ public class MainPageTest extends BaseTest {
     TshirtPage.swithToCommentPage();
     TshirtPage.setFiveStart();
     TshirtPage.enterTitle();
-    TshirtPage.enterComment();
+    TshirtPage.enterComment("Faded short sleeve t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!");
     TshirtPage.submitCommnet();
     TshirtPage.switchToOkWindow();
     TshirtPage.approveWindow();
   }
-
-  @Test
-  public void addBluse() {
-
-  }
-
-
 }

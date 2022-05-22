@@ -56,8 +56,8 @@ public class TshirtPage {
     title.sendKeys("High quality product");
   }
 
-  public static void enterComment() {
-    comment.sendKeys("Faded short sleeve t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!");
+  public static void enterComment(String text) {
+    comment.sendKeys(text);
   }
 
   public static void submitCommnet() {

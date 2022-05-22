@@ -10,15 +10,11 @@ import static pages.SignInPage.driver;
 
 public class CasualDressPage {
   @FindBy(css = ".product-container")
-  static
-  WebElement casualdresshover;
+  static WebElement casualdresshover;
   @FindBy(css = ".button.ajax_add_to_cart_button.btn.btn-default")
-  static
-  WebElement addtochart;
-
+  static WebElement addtochart;
   @FindBy(css = ".col-md-6 > div.button-container > a")
-  static
-  WebElement proceedbutton;
+  static WebElement proceedbutton;
 
   public CasualDressPage(WebDriver driver) {
     PageFactory.initElements(driver, this);
@@ -36,6 +32,5 @@ public class CasualDressPage {
   public static OrderPage proceedOnPopUp() {
     proceedbutton.click();
     return new OrderPage(driver);
-
   }
 }
