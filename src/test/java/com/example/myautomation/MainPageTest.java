@@ -3,6 +3,7 @@ package com.example.myautomation;
 import MainPage.MainPage;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.selector.ByText;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,14 @@ import java.util.concurrent.TimeUnit;
 import static com.codeborne.selenide.Condition.text;
 
 public class MainPageTest extends BaseTest {
+  private WebDriver driver;
+private SignInPage signInPage;
+//private BasePage basePage;
+
+	@BeforeClass
+	public void setUp() {
+		driver=getDriver();
+	}
 
   @Test
   public void openPageChrome() {
@@ -50,17 +59,18 @@ public class MainPageTest extends BaseTest {
     driver.close();
   }
 
+
   @Test
-  public void orderCasualDress() {
-    MainPage mainPage = new MainPage(driver);
-    mainPage.openPage("http://automationpractice.com/index.php");
+   public void orderCasualDress() {
+    //MainPage mainPage = new MainPage(driver);
+    MainPage.openPage("http://automationpractice.com/index.php");
     SignInPage.logIn();
     SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
-    mainPage.dressesTopMenu();
-    mainPage.casualdress();
+    MainPage.dressesTopMenu();
+    MainPage.casualdress();
     CasualDressPage.hoverDress();
     CasualDressPage.addToChart();
-    mainPage.switchToWindow();
+    MainPage.switchToWindow();
     CasualDressPage.proceedOnPopUp();
     OrderPage.confirmOrder();
     String ordernumber = OrderPage.getOrderNumber();
@@ -73,8 +83,8 @@ public class MainPageTest extends BaseTest {
 
   @Test
   public void regUser() {
-    MainPage mainPage = new MainPage(driver);
-    mainPage.openPage("http://automationpractice.com/index.php");
+    //MainPage mainPage = new MainPage(driver);
+    MainPage.openPage("http://automationpractice.com/index.php");
     SignInPage.logIn();
     SignInPage.newUserCredentials("newuser@newuser.com");
     SignInPage.creatUser();
@@ -84,11 +94,11 @@ public class MainPageTest extends BaseTest {
 
   @Test
   public void writeReview() {
-    MainPage mainPage = new MainPage(driver);
-    mainPage.openPage("http://automationpractice.com/index.php");
+    //MainPage mainPage = new MainPage(driver);
+    MainPage.openPage("http://automationpractice.com/index.php");
     SignInPage.logIn();
     SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
-    mainPage.tshirtTopMenu();
+    MainPage.tshirtTopMenu();
     TshirtPage.dressHover();
     TshirtPage.clickMore();
     TshirtPage.openComment();
