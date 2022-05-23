@@ -8,18 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import pages.SignInPage;
 import pages.TshirtPage;
 
-public class  MainPage {
-  protected static WebDriver driver;
+public class MainPage {
+  static WebDriver driver;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(2) > a")
-  static
-
   WebElement dresses;
   @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a")
-  static
   WebElement casualdress;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(3) > a")
-  static
-  WebElement tshirt;
+  static WebElement tshirt;
 
   public MainPage(WebDriver driver) {
     this.driver = driver;
@@ -27,12 +23,12 @@ public class  MainPage {
 
   }
 
-  public static SignInPage  openPage(String urladdres) {
-      driver.get(urladdres);
+  public SignInPage openPage(String urladdres) {
+    driver.get(urladdres);
     return new SignInPage(driver);
   }
 
-  public static void dressesTopMenu() {
+  public void dressesTopMenu() {
     Actions action = new Actions(driver);
     action.moveToElement(dresses).build().perform();
   }
@@ -42,11 +38,11 @@ public class  MainPage {
     return new TshirtPage(driver);
   }
 
-  public static void casualdress() {
+  public void casualdress() {
     casualdress.click();
   }
 
-  public static void switchToWindow() {
+  public void switchToWindow() {
     driver.switchTo().activeElement();
   }
 
