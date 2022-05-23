@@ -9,7 +9,7 @@ import pages.SignInPage;
 import pages.TshirtPage;
 
 public class  MainPage {
-  protected static WebDriver driver;
+  protected  WebDriver driver;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(2) > a")
   static
 
@@ -27,26 +27,26 @@ public class  MainPage {
 
   }
 
-  public static SignInPage  openPage(String urladdres) {
+  public  SignInPage  openPage(String urladdres) {
       driver.get(urladdres);
     return new SignInPage(driver);
   }
 
-  public static void dressesTopMenu() {
+  public  void dressesTopMenu() {
     Actions action = new Actions(driver);
     action.moveToElement(dresses).build().perform();
   }
 
-  public static TshirtPage tshirtTopMenu() {
+  public  TshirtPage tshirtTopMenu() {
     tshirt.click();
     return new TshirtPage(driver);
   }
 
-  public static void casualdress() {
+  public  void casualdress() {
     casualdress.click();
   }
 
-  public static void switchToWindow() {
+  public  void switchToWindow() {
     driver.switchTo().activeElement();
   }
 

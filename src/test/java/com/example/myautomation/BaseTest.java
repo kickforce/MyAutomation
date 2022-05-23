@@ -49,7 +49,7 @@ public class BaseTest {
 		driver.navigate().to(appURL);
 		return driver;
 	}
-
+/*
 	@BeforeClass
 	public void initializeTestBaseSetup(String browserType, String appURL) {
 		try {
@@ -58,7 +58,7 @@ public class BaseTest {
 		} catch (Exception e) {
 			System.out.println("Error....." + e.getStackTrace());
 		}
-	}
+	}*/
 
 	/*@AfterClass
 	public void tearDown() {
