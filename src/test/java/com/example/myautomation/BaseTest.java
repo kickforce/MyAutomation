@@ -1,35 +1,30 @@
 package com.example.myautomation;
 
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.PageFactory;
-
-import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-  private WebDriver driver;
+  private static WebDriver driver;
   	static String driverPath = "/Users/vitali/IdeaProjects/chromedriver";
 
 
 		public WebDriver getDriver() {
 		return driver;
 	}
-  private void setDriver(String browserType, String appURL) {
+  private static void setDriver(String browserType) {
 		switch (browserType) {
 		case "chrome":
-			driver = initChromeDriver(appURL);
+			driver = initChromeDriver("http://automationpractice.com/index.php");
 			break;
 		case "firefox":
-			driver = initFirefoxDriver(appURL);
+			driver = initFirefoxDriver("http://automationpractice.com/index.php");
 			break;
 		default:
 			System.out.println("browser : " + browserType
 					+ " is invalid, Launching Firefox as browser of choice..");
-			driver = initFirefoxDriver(appURL);
+			driver = initFirefoxDriver("http://automationpractice.com/index.php");
 		}
 	}
   private static WebDriver initFirefoxDriver(String appURL) {
@@ -49,16 +44,17 @@ public class BaseTest {
 		driver.navigate().to(appURL);
 		return driver;
 	}
-/*
+
 	@BeforeClass
-	public void initializeTestBaseSetup(String browserType, String appURL) {
+	public static void initializeTestBaseSetup() {
 		try {
-			setDriver(browserType, appURL);
+			String chrome = "chrome";
+			setDriver(chrome);
 
 		} catch (Exception e) {
 			System.out.println("Error....." + e.getStackTrace());
 		}
-	}*/
+	}
 
 	/*@AfterClass
 	public void tearDown() {
