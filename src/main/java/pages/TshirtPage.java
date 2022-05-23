@@ -6,9 +6,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static pages.SignInPage.driver;
+//import static pages.SignInPage.driver;
 
-public class TshirtPage {
+public class TshirtPage extends BasePage {
   @FindBy(css = ".product-container")
   static WebElement dress;
   @FindBy(css = ".lnk_view.btn.btn-default > span")
@@ -27,7 +27,9 @@ public class TshirtPage {
   static WebElement submitwindow;
 
   public TshirtPage(WebDriver driver) {
-    PageFactory.initElements(SignInPage.driver, this);
+   // PageFactory.initElements(SignInPage.driver, this);
+        super(driver);
+
   }
 
   public static void dressHover() {

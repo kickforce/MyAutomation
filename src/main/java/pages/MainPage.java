@@ -16,7 +16,7 @@ public class MainPage extends BasePage {
   @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a")
   WebElement casualdress;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(3) > a")
-  static WebElement tshirt;
+   WebElement tshirt;
 
   public MainPage(WebDriver driver) {
     /*this.driver = driver;
@@ -41,8 +41,9 @@ public class MainPage extends BasePage {
     //return new TshirtPage(driver);
   }
 
-  public void casualdress() {
+  public CasualDressPage casualdress() {
     casualdress.click();
+    return new CasualDressPage(driver);
   }
 
   public void switchToWindow() {
