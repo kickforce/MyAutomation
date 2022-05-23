@@ -1,6 +1,6 @@
 package com.example.myautomation;
 
-import MainPage.MainPage;
+//import MainPage.MainPage;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.*;
@@ -52,7 +52,7 @@ public class MainPageTest extends BaseTest {
 
   @Test
   public void orderCasualDress() {
-    MainPage mainPage = new MainPage(driver);
+    MainPage mainPage = new MainPage(getDriver());
     mainPage.openPage("http://automationpractice.com/index.php");
     SignInPage.logIn();
     SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");

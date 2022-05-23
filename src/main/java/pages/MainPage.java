@@ -1,15 +1,16 @@
-package MainPage;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 import pages.SignInPage;
 import pages.TshirtPage;
 
-public class MainPage {
-  static WebDriver driver;
+public class MainPage extends BasePage {
+  //static WebDriver driver;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(2) > a")
   WebElement dresses;
   @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a")
@@ -18,8 +19,10 @@ public class MainPage {
   static WebElement tshirt;
 
   public MainPage(WebDriver driver) {
-    this.driver = driver;
-    PageFactory.initElements(driver, this);
+    /*this.driver = driver;
+    PageFactory.initElements(driver, this);*/
+    super(driver);
+
 
   }
 
@@ -33,9 +36,9 @@ public class MainPage {
     action.moveToElement(dresses).build().perform();
   }
 
-  public static TshirtPage tshirtTopMenu() {
+  public void tshirtTopMenu() {
     tshirt.click();
-    return new TshirtPage(driver);
+    //return new TshirtPage(driver);
   }
 
   public void casualdress() {
