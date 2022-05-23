@@ -73,7 +73,7 @@ public class MainPageTest extends BaseTest {
 
   @Test
   public void regUser() {
-    MainPage mainPage = new MainPage(driver);
+    MainPage mainPage = new MainPage(getDriver());
     mainPage.openPage("http://automationpractice.com/index.php");
     SignInPage.logIn();
     SignInPage.newUserCredentials("newuser@newuser.com");
@@ -84,7 +84,7 @@ public class MainPageTest extends BaseTest {
 
   @Test
   public void writeReview() {
-    MainPage mainPage = new MainPage(driver);
+    MainPage mainPage = new MainPage(getDriver());
     mainPage.openPage("http://automationpractice.com/index.php");
     SignInPage.logIn();
     SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");

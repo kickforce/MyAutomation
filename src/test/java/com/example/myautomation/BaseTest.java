@@ -7,10 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-  public static WebDriver driver;
+    private WebDriver driver;
 
-  @BeforeAll
-  public static void driverSetup(){
+    @BeforeSuite
+  public  void driverSetup(){
           if (driver == null) {
             System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver");
             driver =  new ChromeDriver();
@@ -19,8 +19,8 @@ public class BaseTest {
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
           }
   }
-  @AfterAll
-  public static void driverTearDown(){
+  @AfterSuite
+  public  void driverTearDown(){
     driver.quit();
   }
 

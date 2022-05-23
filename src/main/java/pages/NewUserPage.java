@@ -7,51 +7,52 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class NewUserPage {
+public class NewUserPage extends BasePage{
 
   @FindBy(id = "id_gender1")
-  static WebElement gender;
+   WebElement gender;
   @FindBy(id = "customer_firstname")
-  static WebElement firstname;
+   WebElement firstname;
   @FindBy(id = "customer_lastname")
-  static WebElement lastname;
+   WebElement lastname;
   @FindBy(id = "newsletter")
-  static WebElement newsletter;
+   WebElement newsletter;
   @FindBy(id = "optin")
-  static WebElement option;
+   WebElement option;
   @FindBy(id = "days")
-  static WebElement day;
+   WebElement day;
   @FindBy(id = "months")
-  static WebElement month;
+   WebElement month;
   @FindBy(id = "years")
-  static WebElement year;
+   WebElement year;
   @FindBy(id = "passwd")
-  static WebElement password;
+   WebElement password;
   @FindBy(id = "company")
-  static WebElement company;
+   WebElement company;
   @FindBy(id = "address1")
-  static WebElement addres;
+   WebElement addres;
   @FindBy(id = "city")
-  static WebElement city;
+   WebElement city;
   @FindBy(id = "id_state")
-  static WebElement state;
+   WebElement state;
   @FindBy(id = "postcode")
-  static WebElement postcode;
+   WebElement postcode;
   @FindBy(id = "other")
-  static WebElement other;
+   WebElement other;
   @FindBy(id = "phone")
-  static WebElement phone;
+   WebElement phone;
   @FindBy(id = "phone_mobile")
-  static WebElement phonemobile;
+   WebElement phonemobile;
   @FindBy(id = "alias")
-  static WebElement alias;
+   WebElement alias;
   @FindBy(id = "submitAccount")
-  static WebElement submitaccount;
+   WebElement submitaccount;
   public NewUserPage(WebDriver driver) {
-    PageFactory.initElements(SignInPage.driver, this);
+    //PageFactory.initElements(SignInPage.driver, this);
+    super(driver);
   }
 
-  public static void enterInformation(){
+  public  void enterInformation(){
     gender.click();
     firstname.sendKeys("Ivan");
     lastname.sendKeys("Ivanov");
@@ -76,7 +77,7 @@ public class NewUserPage {
     alias.sendKeys("18, Baker street");
   }
 
-  public static void submitForm() {
+  public  void submitForm() {
   submitaccount.click();
   }
 

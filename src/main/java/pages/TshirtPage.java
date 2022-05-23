@@ -10,21 +10,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TshirtPage extends BasePage {
   @FindBy(css = ".product-container")
-  static WebElement dress;
+   WebElement dress;
   @FindBy(css = ".lnk_view.btn.btn-default > span")
-  static WebElement more;
+   WebElement more;
   @FindBy(id = "content")
-  static WebElement comment;
+   WebElement comment;
   @FindBy(css = ".star_content > div:nth-child(7) > a")
-  static WebElement fivestart;
+   WebElement fivestart;
   @FindBy(id = "comment_title")
-  static WebElement title;
+   WebElement title;
   @FindBy(xpath = "//*[@id='product_comments_block_extra']/ul/li/a")
-  static WebElement content;
+   WebElement content;
   @FindBy(css = "#submitNewMessage")
-  static WebElement submitnewmessage;
+   WebElement submitnewmessage;
   @FindBy(xpath = "//*[@id='product']/div[2]/div/div/div/p[2]/button/span")
-  static WebElement submitwindow;
+   WebElement submitwindow;
 
   public TshirtPage(WebDriver driver) {
    // PageFactory.initElements(SignInPage.driver, this);
@@ -32,45 +32,45 @@ public class TshirtPage extends BasePage {
 
   }
 
-  public static void dressHover() {
+  public  void dressHover() {
     Actions action = new Actions(driver);
     action.moveToElement(dress).build().perform();
   }
 
-  public static void clickMore() {
+  public  void clickMore() {
     more.click();
   }
 
-  public static void openComment() {
+  public  void openComment() {
     content.click();
   }
 
-  public static void swithToCommentPage() {
+  public  void swithToCommentPage() {
     driver.switchTo().activeElement();
 
   }
 
-  public static void setFiveStart() {
+  public  void setFiveStart() {
     fivestart.click();
   }
 
-  public static void enterTitle() {
+  public  void enterTitle() {
     title.sendKeys("High quality product");
   }
 
-  public static void enterComment(String text) {
+  public  void enterComment(String text) {
     comment.sendKeys(text);
   }
 
-  public static void submitCommnet() {
+  public  void submitCommnet() {
     submitnewmessage.click();
   }
 
-  public static void switchToOkWindow() {
+  public  void switchToOkWindow() {
     driver.switchTo().activeElement();
   }
 
-  public static void approveWindow() {
+  public  void approveWindow() {
     submitwindow.click();
 
   }
