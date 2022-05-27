@@ -18,7 +18,7 @@ public class CasualDressPage extends BasePage{
 
   public CasualDressPage(WebDriver driver) {
    // PageFactory.initElements(driver, this);
-    super(driver);
+      super(driver);
   }
 
   public  void hoverDress() {

@@ -2,17 +2,11 @@ package com.example.myautomation;
 
 //import MainPage.MainPage;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import pages.*;
-
-import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Condition.text;
 
@@ -53,17 +47,17 @@ public class MainPageTest extends BaseTest {
   @Test
   public void orderCasualDress() {
     MainPage mainPage = new MainPage(getDriver());
-    mainPage.openPage("http://automationpractice.com/index.php");
-    SignInPage.logIn();
-    SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
+    SignInPage signInPage = mainPage.openPage("http://automationpractice.com/index.php");
+    signInPage.logIn();
+    signInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
     mainPage.dressesTopMenu();
-    mainPage.casualdress();
-    CasualDressPage.hoverDress();
-    CasualDressPage.addToChart();
+    CasualDressPage casualDressPage = mainPage.casualdress();
+    casualDressPage.hoverDress();
+    casualDressPage.addToChart();
     mainPage.switchToWindow();
-    CasualDressPage.proceedOnPopUp();
-    OrderPage.confirmOrder();
-    String ordernumber = OrderPage.getOrderNumber();
+    OrderPage orderPage = casualDressPage.proceedOnPopUp();
+    orderPage.confirmOrder();
+    String ordernumber = orderPage.getOrderNumber();
     ContactFormPage.contactUs();
     ContactFormPage.subjectHeadingChoose();
     ContactFormPage.selectReference(ordernumber);
@@ -74,30 +68,30 @@ public class MainPageTest extends BaseTest {
   @Test
   public void regUser() {
     MainPage mainPage = new MainPage(getDriver());
-    mainPage.openPage("http://automationpractice.com/index.php");
-    SignInPage.logIn();
-    SignInPage.newUserCredentials("newuser@newuser.com");
-    SignInPage.creatUser();
-    NewUserPage.enterInformation();
-    NewUserPage.submitForm();
+    SignInPage signInPage =mainPage.openPage("http://automationpractice.com/index.php");
+    signInPage.logIn();
+    signInPage.newUserCredentials("newuser@newuser.com");
+    NewUserPage newUserPage = signInPage.creatUser();
+    newUserPage.enterInformation();
+    newUserPage.submitForm();
   }
 
   @Test
   public void writeReview() {
     MainPage mainPage = new MainPage(getDriver());
-    mainPage.openPage("http://automationpractice.com/index.php");
-    SignInPage.logIn();
-    SignInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
-    mainPage.tshirtTopMenu();
-    TshirtPage.dressHover();
-    TshirtPage.clickMore();
-    TshirtPage.openComment();
-    TshirtPage.swithToCommentPage();
-    TshirtPage.setFiveStart();
-    TshirtPage.enterTitle();
-    TshirtPage.enterComment("Faded short sleeve t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!");
-    TshirtPage.submitCommnet();
-    TshirtPage.switchToOkWindow();
-    TshirtPage.approveWindow();
+    SignInPage signInPage = mainPage.openPage("http://automationpractice.com/index.php");
+    signInPage.logIn();
+    signInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
+    TshirtPage tshirtPage = mainPage.tshirtTopMenu();
+    tshirtPage.dressHover();
+    tshirtPage.clickMore();
+    tshirtPage.openComment();
+    tshirtPage.swithToCommentPage();
+    tshirtPage.setFiveStart();
+    tshirtPage.enterTitle();
+    tshirtPage.enterComment("Faded short sleeve t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!");
+    tshirtPage.submitCommnet();
+    tshirtPage.switchToOkWindow();
+    tshirtPage.approveWindow();
   }
 }

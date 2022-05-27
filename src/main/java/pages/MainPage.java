@@ -10,7 +10,7 @@ import pages.SignInPage;
 import pages.TshirtPage;
 
 public class MainPage extends BasePage {
-  //static WebDriver driver;
+  //private WebDriver driver;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(2) > a")
   WebElement dresses;
   @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a")
@@ -22,8 +22,6 @@ public class MainPage extends BasePage {
     /*this.driver = driver;
     PageFactory.initElements(driver, this);*/
     super(driver);
-
-
   }
 
   public SignInPage openPage(String urladdres) {
@@ -36,9 +34,9 @@ public class MainPage extends BasePage {
     action.moveToElement(dresses).build().perform();
   }
 
-  public void tshirtTopMenu() {
+  public TshirtPage tshirtTopMenu() {
     tshirt.click();
-    //return new TshirtPage(driver);
+    return new TshirtPage(driver);
   }
 
   public CasualDressPage casualdress() {

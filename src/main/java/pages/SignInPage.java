@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends BasePage {
-  //static WebDriver driver;
+  private WebDriver driver;
 
   @FindBy(css = "#email")
 
@@ -40,7 +40,7 @@ public class SignInPage extends BasePage {
     return new CasualDressPage(driver);
   }
 
-  public  void logIn() {
+  public void logIn() {
     signin.click();
   }
 
