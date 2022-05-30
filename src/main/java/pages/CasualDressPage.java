@@ -17,7 +17,6 @@ public class CasualDressPage extends BasePage{
    WebElement proceedbutton;
 
   public CasualDressPage(WebDriver driver) {
-   // PageFactory.initElements(driver, this);
       super(driver);
   }
 

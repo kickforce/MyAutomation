@@ -4,9 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
-//import static pages.SignInPage.driver;
 
 public class TshirtPage extends BasePage {
   @FindBy(css = ".product-container")
@@ -26,11 +23,7 @@ public class TshirtPage extends BasePage {
   @FindBy(xpath = "//*[@id='product']/div[2]/div/div/div/p[2]/button/span")
    WebElement submitwindow;
 
-  public TshirtPage(WebDriver driver) {
-   // PageFactory.initElements(SignInPage.driver, this);
-        super(driver);
-
-  }
+  public TshirtPage(WebDriver driver) {super(driver);}
 
   public  void dressHover() {
     Actions action = new Actions(driver);
@@ -45,10 +38,7 @@ public class TshirtPage extends BasePage {
     content.click();
   }
 
-  public  void swithToCommentPage() {
-    driver.switchTo().activeElement();
-
-  }
+  public  void swithToCommentPage() {driver.switchTo().activeElement();}
 
   public  void setFiveStart() {
     fivestart.click();
@@ -70,8 +60,5 @@ public class TshirtPage extends BasePage {
     driver.switchTo().activeElement();
   }
 
-  public  void approveWindow() {
-    submitwindow.click();
-
-  }
+  public  void approveWindow() {submitwindow.click();}
 }

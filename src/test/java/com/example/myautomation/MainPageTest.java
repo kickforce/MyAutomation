@@ -70,7 +70,7 @@ public class MainPageTest extends BaseTest {
     MainPage mainPage = new MainPage(getDriver());
     SignInPage signInPage =mainPage.openPage("http://automationpractice.com/index.php");
     signInPage.logIn();
-    signInPage.newUserCredentials("newuser@newuser.com");
+    signInPage.newUserCredentials("newuser1@newuser.com");
     NewUserPage newUserPage = signInPage.creatUser();
     newUserPage.enterInformation();
     newUserPage.submitForm();

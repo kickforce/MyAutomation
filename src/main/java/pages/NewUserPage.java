@@ -47,10 +47,8 @@ public class NewUserPage extends BasePage{
    WebElement alias;
   @FindBy(id = "submitAccount")
    WebElement submitaccount;
-  public NewUserPage(WebDriver driver) {
-    //PageFactory.initElements(SignInPage.driver, this);
-    super(driver);
-  }
+
+  public NewUserPage(WebDriver driver) {super(driver);}
 
   public  void enterInformation(){
     gender.click();

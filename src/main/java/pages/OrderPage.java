@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-//import static pages.SignInPage.driver;
 
 public class OrderPage extends BasePage{
   @FindBy(css = ".standard-checkout.button-medium")
@@ -22,11 +20,7 @@ public class OrderPage extends BasePage{
   @FindBy(css = ".box")
    WebElement number;
 
-  public OrderPage(WebDriver driver) {
-   // PageFactory.initElements(driver, this);
-        super(driver);
-
-  }
+  public OrderPage(WebDriver driver) {super(driver);}
 
   public  ContactFormPage confirmOrder() {
     proceedtosummary.click();
