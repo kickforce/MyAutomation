@@ -10,7 +10,7 @@ import pages.*;
 
 import static com.codeborne.selenide.Condition.text;
 
-public class MainPageTest extends BaseTest {
+public class   MainPageTest extends BaseTest {
 
   @Test
   public void openPageChrome() {
