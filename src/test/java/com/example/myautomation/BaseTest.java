@@ -20,11 +20,13 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-  private static RemoteWebDriver driver;
+ // private static RemoteWebDriver driver;
+    private static WebDriver driver;
+
 
   @BeforeAll
   public static void beforeAll() throws MalformedURLException {
-      /*System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver3");
+      System.setProperty("webdriver.chrome.driver", "/Users/vitali/IdeaProjects/chromedriver3");
       System.setProperty("headless", "false"); // You can set this property elsewhere
       String headless = System.getProperty("headless");
       ChromeDriverManager.chromedriver();
@@ -37,9 +39,9 @@ public class BaseTest {
       } else { }
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().fullscreen();*/
+        driver.manage().window().fullscreen();
 
-    final DesiredCapabilities capabilities = new DesiredCapabilities();
+   /* final DesiredCapabilities capabilities = new DesiredCapabilities();
       capabilities.setCapability("browserName", "chrome");
     capabilities.setCapability("browserVersion", "101.0");
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -49,7 +51,7 @@ public class BaseTest {
        driver = new RemoteWebDriver(
               URI.create("http://localhost:4444/wd/hub").toURL(),
             capabilities
-    );
+    );*/
       // driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
   }
