@@ -1,10 +1,22 @@
 {
-  "chrome": {
-    "default": "94.0",
+  "firefox": {
+    "default": "100.0",
     "versions": {
-      "94.0": {
-        "image": "selenoid/vnc:chrome_94.0",
-        "port": "4444"
+      "100.0": {
+        "image": "selenoid/firefox:100.0",
+        "port": "4444",
+        "path": "/wd/hub",
+        "tmpfs": {"/tmp":"size=512m"}
+      }
+    }
+  },
+  "chrome": {
+    "default": "101.0",
+    "versions": {
+      "101.0": {
+        "image": "selenoid/chrome:101.0",
+        "port": "4444",
+        "tmpfs": {"/tmp":"size=512m"}
       }
     }
   }
