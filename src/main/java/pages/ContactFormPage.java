@@ -8,29 +8,32 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class ContactFormPage {
+public class ContactFormPage extends BasePage {
   @FindBy(id = "id_contact")
-  static WebElement subjectheading;
+   WebElement subjectheading;
   @FindBy(css = "div:nth-child(6) > div > select")
-  static List<WebElement> orderreference;
+   List<WebElement> orderreference;
   @FindBy(css = "#message")
-  static WebElement messagebox;
+   WebElement messagebox;
   @FindBy(css = "#submitMessage")
-  static WebElement submitmesssage;
+   WebElement submitmesssage;
   @FindBy(css = "#contact-link > a")
-  static WebElement contactus;
+   WebElement contactus;
+  @FindBy(css = ".alert.alert-success")
+  WebElement message;
 
-  public ContactFormPage(WebDriver driver) {
-    PageFactory.initElements(driver, this);
+  public void messageText(){
+    message.getText().contains("Your message has been successfully sent to our team.");
   }
 
+  public ContactFormPage(WebDriver driver) {super(driver);}
 
-  public static void subjectHeadingChoose() {
+  public void subjectHeadingChoose() {
     Select subject = new Select(subjectheading);
     subject.selectByValue("2");
   }
 
-  public static void selectReference(String refenceordernumber) {
+  public void selectReference(String refenceordernumber) {
 
     List<WebElement> refnumber = orderreference;
     for (WebElement option : refnumber) {
@@ -41,15 +44,13 @@ public class ContactFormPage {
     }
   }
 
-  public static void enterText() {
+  public void enterText() {
     messagebox.sendKeys("I have a problem with my order. Could you help me,please?");
   }
 
-  public static void submitContactForm() {
+  public void submitContactForm() {
     submitmesssage.click();
   }
 
-  public static void contactUs() {
-    contactus.click();
-  }
+  public void contactUs() {contactus.click();}
 }

@@ -7,50 +7,52 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class NewUserPage extends BasePage{
+public class NewUserPage extends BasePage {
 
   @FindBy(id = "id_gender1")
-   WebElement gender;
+  WebElement gender;
   @FindBy(id = "customer_firstname")
-   WebElement firstname;
+  WebElement firstname;
   @FindBy(id = "customer_lastname")
-   WebElement lastname;
+  WebElement lastname;
   @FindBy(id = "newsletter")
-   WebElement newsletter;
+  WebElement newsletter;
   @FindBy(id = "optin")
-   WebElement option;
+  WebElement option;
   @FindBy(id = "days")
-   WebElement day;
+  WebElement day;
   @FindBy(id = "months")
-   WebElement month;
+  WebElement month;
   @FindBy(id = "years")
-   WebElement year;
+  WebElement year;
   @FindBy(id = "passwd")
-   WebElement password;
+  WebElement password;
   @FindBy(id = "company")
-   WebElement company;
+  WebElement company;
   @FindBy(id = "address1")
-   WebElement addres;
+  WebElement addres;
   @FindBy(id = "city")
-   WebElement city;
+  WebElement city;
   @FindBy(id = "id_state")
-   WebElement state;
+  WebElement state;
   @FindBy(id = "postcode")
-   WebElement postcode;
+  WebElement postcode;
   @FindBy(id = "other")
-   WebElement other;
+  WebElement other;
   @FindBy(id = "phone")
-   WebElement phone;
+  WebElement phone;
   @FindBy(id = "phone_mobile")
-   WebElement phonemobile;
+  WebElement phonemobile;
   @FindBy(id = "alias")
-   WebElement alias;
+  WebElement alias;
   @FindBy(id = "submitAccount")
-   WebElement submitaccount;
+  WebElement submitaccount;
 
-  public NewUserPage(WebDriver driver) {super(driver);}
+  public NewUserPage(WebDriver driver) {
+    super(driver);
+  }
 
-  public  void enterInformation(){
+  public void enterInformation() {
     gender.click();
     firstname.sendKeys("Ivan");
     lastname.sendKeys("Ivanov");
@@ -75,8 +77,9 @@ public class NewUserPage extends BasePage{
     alias.sendKeys("18, Baker street");
   }
 
-  public  void submitForm() {
-  submitaccount.click();
+  public MainPage submitForm() {
+    submitaccount.click();
+    return new MainPage(driver);
   }
 
 }

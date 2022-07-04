@@ -1,6 +1,7 @@
 package com.example.myautomation;
 
 //import MainPage.MainPage;
+
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +11,8 @@ import pages.*;
 
 import static com.codeborne.selenide.Condition.text;
 
-public class   MainPageTest extends BaseTest {
-
+public class MainPageTest extends BaseTest {
+/*
   @Test
   public void openPageChrome() {
     Selenide.open("https://devby.io/");
@@ -42,7 +43,7 @@ public class   MainPageTest extends BaseTest {
     String url = "https://devby.io/";
     driver.get(url);
     driver.close();
-  }
+  }*/
 
   @Test
   public void orderCasualDress() {
@@ -57,23 +58,33 @@ public class   MainPageTest extends BaseTest {
     mainPage.switchToWindow();
     OrderPage orderPage = casualDressPage.proceedOnPopUp();
     orderPage.confirmOrder();
-    String ordernumber = orderPage.getOrderNumber();
-    ContactFormPage.contactUs();
-    ContactFormPage.subjectHeadingChoose();
-    ContactFormPage.selectReference(ordernumber);
-    ContactFormPage.enterText();
-    ContactFormPage.submitContactForm();
+    orderPage.ordertext();
   }
 
   @Test
   public void regUser() {
     MainPage mainPage = new MainPage(getDriver());
-    SignInPage signInPage =mainPage.openPage("http://automationpractice.com/index.php");
+    SignInPage signInPage = mainPage.openPage("http://automationpractice.com/index.php");
     signInPage.logIn();
-    signInPage.newUserCredentials("newuser1@newuser.com");
+    signInPage.newUserCredentials("newuser5@newuser.com");
     NewUserPage newUserPage = signInPage.creatUser();
     newUserPage.enterInformation();
-    newUserPage.submitForm();
+    MainPage mainPage1 = newUserPage.submitForm();
+    mainPage1.dressesTopMenu();
+    CasualDressPage casualDressPage = mainPage1.casualdress();
+    casualDressPage.hoverDress();
+    casualDressPage.addToChart();
+    mainPage.switchToWindow();
+    OrderPage orderPage = casualDressPage.proceedOnPopUp();
+    ContactFormPage contactFormPage = orderPage.confirmOrder();
+    String ordernumber = orderPage.getOrderNumber();
+    contactFormPage.contactUs();
+    contactFormPage.subjectHeadingChoose();
+    contactFormPage.selectReference(ordernumber);
+    contactFormPage.enterText();
+    contactFormPage.submitContactForm();
+    contactFormPage.messageText();
+
   }
 
   @Test
@@ -92,6 +103,36 @@ public class   MainPageTest extends BaseTest {
     tshirtPage.enterComment("Faded short sleeve t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!");
     tshirtPage.submitCommnet();
     tshirtPage.switchToOkWindow();
+    tshirtPage.checkComment();
     tshirtPage.approveWindow();
+  }
+
+  @Test
+  public void addBlouse() {
+    MainPage mainPage = new MainPage(getDriver());
+    SignInPage signInPage = mainPage.openPage("http://automationpractice.com/index.php");
+    signInPage.logIn();
+    signInPage.logInAss("kickforce666@gmail.com", "123qweQWE");
+    WomenPage womenPage = mainPage.clickWomen();
+    womenPage.hoverBlouse();
+    womenPage.addToWishlist();
+    womenPage.closeWindow();
+    womenPage.openAccount();
+    womenPage.openWishList();
+    womenPage.openFirstElement();
+    womenPage.deleteElement();
+    mainPage.acceptAlertMessage();
+  }
+
+  @Test
+  public void checkDifferentColourDress() {
+    MainPage mainPage = new MainPage(getDriver());
+    mainPage.openPage("http://automationpractice.com/index.php");
+    SummerDressesPage summerDressesPage = mainPage.summerDresses();
+    summerDressesPage.hoverDress();
+    summerDressesPage.clickBlack();
+    summerDressesPage.clickOrange();
+    summerDressesPage.clickBlue();
+    summerDressesPage.clickYellow();
   }
 }

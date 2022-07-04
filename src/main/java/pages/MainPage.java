@@ -11,9 +11,27 @@ public class MainPage extends BasePage {
   @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a")
   WebElement casualdress;
   @FindBy(css = "#block_top_menu > ul > li:nth-child(3) > a")
-   WebElement tshirt;
+  WebElement tshirt;
 
-  public MainPage(WebDriver driver) {super(driver);}
+  @FindBy(css = "#block_top_menu > ul > li:nth-child(1) > a")
+  WebElement women;
+
+  @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[2]/a")
+  WebElement blouse;
+  @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]/ul/li[3]/a")
+  WebElement summerdress;
+
+  public WomenPage clickWomen() {
+    Actions action = new Actions(driver);
+    action.moveToElement(women).build().perform();
+    blouse.click();
+    return new WomenPage(driver);
+  }
+
+
+  public MainPage(WebDriver driver) {
+    super(driver);
+  }
 
   public SignInPage openPage(String urladdres) {
     driver.get(urladdres);
@@ -39,4 +57,14 @@ public class MainPage extends BasePage {
     driver.switchTo().activeElement();
   }
 
+  public void acceptAlertMessage() {
+    driver.switchTo().alert().accept();
+  }
+
+  public SummerDressesPage summerDresses() {
+    Actions action = new Actions(driver);
+    action.moveToElement(dresses).build().perform();
+    summerdress.click();
+    return new SummerDressesPage(driver);
+  }
 }

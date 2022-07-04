@@ -19,7 +19,9 @@ public class SignInPage extends BasePage {
   @FindBy(css = "#SubmitCreate")
   WebElement createuser;
 
-  public SignInPage(WebDriver driver) {super(driver);}
+  public SignInPage(WebDriver driver) {
+    super(driver);
+  }
 
   public CasualDressPage logInAss(String emailValue, String passwordValue) {
     email.sendKeys(emailValue);
@@ -32,11 +34,11 @@ public class SignInPage extends BasePage {
     signin.click();
   }
 
-  public  void newUserCredentials(String newemail) {
+  public void newUserCredentials(String newemail) {
     createemail.sendKeys(newemail);
   }
 
-  public  NewUserPage creatUser() {
+  public NewUserPage creatUser() {
     createuser.click();
     return new NewUserPage(driver);
   }
