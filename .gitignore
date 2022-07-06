@@ -2,7 +2,11 @@
 /target
 /build
 /allure-results
+/allure-report
 .idea
 *.iml
 out
 gen
+/.allure
+/jenkins_compose
+/jenkins_compose/jenkins_configuration/workspace/Myautomation_pipeline/allure-report/app.js
